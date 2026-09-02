@@ -1,6 +1,5 @@
 # Experiment 8: PL/SQL Cursor Programs
-## NAME: UDHAYA PRAKASH V
-## REG NO: 212224240177
+
 ## AIM
 To write and execute PL/SQL programs using cursors and exception handling to manage runtime errors effectively and display appropriate messages.
 
