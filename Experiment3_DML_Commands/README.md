@@ -1,6 +1,6 @@
 # Experiment 3: DML Commands
-## NAME : UDHAYA PRAKASH V
-## REG NO : 212224240177
+## NAME : AARON RAJESH R
+## REG NO : 212223100001
 ## AIM
 To study and implement DML (Data Manipulation Language) commands.
 
