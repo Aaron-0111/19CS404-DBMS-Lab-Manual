@@ -1,6 +1,6 @@
 # EXPERIMENT 2: DDL Commands
-## NAME : UDHAYA PRAKASH V
-## REGISTRATION  NUMBER : 212224240177
+## NAME : AARON RAJESH R
+## REGISTRATION  NUMBER : 212223100001
 ## AIM
 To study and implement DDL commands and different types of constraints.
 
