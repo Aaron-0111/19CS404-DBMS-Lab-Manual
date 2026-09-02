@@ -1,6 +1,5 @@
 # Experiment 7: PL/SQL – Variables, Control Structures and Loops
-## NAME: UDHAYA PRAKASH V
-## REG NO: 212224240177
+
 ## AIM
 To write and execute simple PL/SQL programs using variables, loops, and conditional statements.
 
@@ -53,8 +52,8 @@ END;
 Greater number is: 80
 
 ### Output: 
-<img width="999" height="1134" alt="image" src="https://github.com/user-attachments/assets/d0cea83a-0fef-4df6-aee8-8774da970b5e" />
 
+![image](https://github.com/user-attachments/assets/d8760b04-7cfb-4308-b274-fbcb5cb55354)
 
 
 ## 2. Write a PL/SQL program to Calculate Sum of First N Natural Numbers
@@ -87,8 +86,8 @@ END;
 Sum of first 10 natural numbers is: 55
 
 ### Output:
-<img width="951" height="1077" alt="image" src="https://github.com/user-attachments/assets/d277b5c9-6527-49fa-92c6-9e6795828ad2" />
 
+![image](https://github.com/user-attachments/assets/2b4b7fa2-ace7-4ef0-a1ed-74b9ee6d8854)
 
 
 ## 3. Write a PL/SQL program to generate Fibonacci series
@@ -129,8 +128,8 @@ n = 7
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 
 ### Output:
-<img width="997" height="1030" alt="image" src="https://github.com/user-attachments/assets/546bd7d3-44b9-4380-9789-eddc3ced928a" />
 
+![image](https://github.com/user-attachments/assets/bb3a4da7-fb25-4616-8e45-c31255bb22a5)
 
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
@@ -166,8 +165,8 @@ n = 1535
 Reversed number is 5351
 
 ### Output:
-<img width="1034" height="1092" alt="image" src="https://github.com/user-attachments/assets/d069419a-38ff-4b4d-be54-c81347cb291c" />
 
+![image](https://github.com/user-attachments/assets/fdad8535-0f89-44a3-893c-34184a3cca9f)
 
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
@@ -205,8 +204,8 @@ a = 10, b = 9, c = 15
 Largest of three number is 15
 
 ### Output:
-<img width="1018" height="1029" alt="image" src="https://github.com/user-attachments/assets/76389259-a50c-47df-9f71-19017f5a614d" />
 
+![image](https://github.com/user-attachments/assets/63e79618-7471-4a54-bce4-6416fca17d9a)
 
 
 ## RESULT
