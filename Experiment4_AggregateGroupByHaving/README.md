@@ -187,3 +187,8 @@ HAVING SUM(salary) > 150000;
 ## Output:
 
 <img width="906" height="347" alt="image" src="https://github.com/user-attachments/assets/e43a4f1b-8953-4211-80cb-e7e000b1d200" />
+
+
+## RESULT
+Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
+
