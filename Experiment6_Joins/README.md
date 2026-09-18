@@ -1,6 +1,4 @@
-# EXPERIMENT 6: Joins
-## NAME: UDHAYA PRAKASH V
-## REG NO: 212224240177
+# Experiment 6: Joins
 
 ## AIM
 To study and implement different types of joins.
@@ -53,381 +51,182 @@ FROM table1
 FULL OUTER JOIN table2
 ON table1.column = table2.column;
 ```
-## Question 1
 
-From the following tables write a SQL query to find those customers with a grade less than 300. Return cust_name, customer city, grade, Salesman, salesmancity. The result should be ordered by ascending customer_id. 
+## Question 1:
 
-Sample table: customer
-~~~
+Display employee names along with their department names using INNER JOIN.
 
- customer_id |   cust_name    |    city    | grade | salesman_id 
--------------+----------------+------------+-------+-------------
-        3002 | Nick Rimando   | New York   |   100 |        5001
-        3007 | Brad Davis     | New York   |   200 |        5001
-        3005 | Graham Zusi    | California |   200 |        5002
-        3008 | Julian Green   | London     |   300 |        5002
-        3004 | Fabian Johnson | Paris      |   300 |        5006
-        3009 | Geoff Cameron  | Berlin     |   100 |        5003
-        3003 | Jozy Altidor   | Moscow     |   200 |        5007
-        3001 | Brad Guzan     | London     |       |        5005
-~~~
-Sample table: salesman
-~~~
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.department_id;
+```
 
- salesman_id |    name    |   city   | commission 
--------------+------------+----------+------------
-        5001 | James Hoog | New York |       0.15
-        5002 | Nail Knite | Paris    |       0.13
-        5005 | Pit Alex   | London   |       0.11
-        5006 | Mc Lyon    | Paris    |       0.14
-        5007 | Paul Adam  | Rome     |       0.13
-        5003 | Lauson Hen | San Jose |       0.12
-~~~
-~~~
-SELECT c.cust_name, c.city, c.grade, s.name AS Salesman, s.city AS city 
-FROM customer c INNER JOIN salesman s ON c.salesman_id = s.salesman_id WHERE 
-    c.grade < 300
-ORDER BY 
-    c.customer_id ASC;
-~~~
-
-**Output:**
-
-![image](https://github.com/user-attachments/assets/fb19768f-4823-45ae-a6c7-140af7e3e903)
+## Output:
 
 
- ## **Question 2**
-
-Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), with a left join on the "customer_id" column and a condition filtering for orders with a purchase amount less than 100.
-![image](https://github.com/user-attachments/assets/08aaf8da-5069-4257-99a1-32c99b6452a2)
-~~~
-SELECT c.cust_name
-FROM customer c
-LEFT JOIN orders o ON c.customer_id = o.customer_id
-WHERE o.purch_amt < 100;
-~~~
-
-**Output:**
-
-![image](https://github.com/user-attachments/assets/960b52b8-848e-48dd-8629-2d24d3922147)
+<img width="950" height="386" alt="image" src="https://github.com/user-attachments/assets/9f5794a8-0c5b-4862-9242-4b1204ed8c33" />
 
 
-## **Question 3**
+## Question 2:
 
-From the following tables write a SQL query to display the customer name, customer city, grade, salesman, salesman city. The results should be sorted by ascending customer_id.  
+Display all employees along with their department names using LEFT JOIN.
 
-Sample table: customer
-~~~
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+LEFT JOIN departments
+ON employees.department_id = departments.department_id;
+```
 
- customer_id |   cust_name    |    city    | grade | salesman_id 
--------------+----------------+------------+-------+-------------
-        3002 | Nick Rimando   | New York   |   100 |        5001
-        3007 | Brad Davis     | New York   |   200 |        5001
-        3005 | Graham Zusi    | California |   200 |        5002
-        3008 | Julian Green   | London     |   300 |        5002
-        3004 | Fabian Johnson | Paris      |   300 |        5006
-        3009 | Geoff Cameron  | Berlin     |   100 |        5003
-        3003 | Jozy Altidor   | Moscow     |   200 |        5007
-        3001 | Brad Guzan     | London     |       |        5005
-~~~
-Sample table: salesman
-~~~
-
- salesman_id |    name    |   city   | commission 
--------------+------------+----------+------------
-        5001 | James Hoog | New York |       0.15
-        5002 | Nail Knite | Paris    |       0.13
-        5005 | Pit Alex   | London   |       0.11
-        5006 | Mc Lyon    | Paris    |       0.14
-        5007 | Paul Adam  | Rome     |       0.13
-        5003 | Lauson Hen | San Jose |       0.12
-~~~
-~~~
-SELECT 
-    c.cust_name, 
-    c.city, 
-    c.grade, 
-    s.name AS Salesman, 
-    s.city AS city
-FROM 
-    customer c
-INNER JOIN 
-    salesman s ON c.salesman_id = s.salesman_id
-ORDER BY 
-    c.customer_id ASC;
-~~~
-
-**Output:**
-
-![image](https://github.com/user-attachments/assets/abd4336a-fcd4-4242-a991-cebeb6a14cc4)
+## Output:
 
 
-## **Question 4**
-From the following tables write a SQL query to find the details of an order. Return ord_no, ord_date, purch_amt, Customer Name, grade, Salesman, commission. 
-
-Sample table: orders
-~~~
-
-ord_no      purch_amt   ord_date    customer_id  salesman_id
-----------  ----------  ----------  -----------  -----------
-70001       150.5       2012-10-05  3005         5002
-70009       270.65      2012-09-10  3001         5005
-70002       65.26       2012-10-05  3002         5001
-70004       110.5       2012-08-17  3009         5003
-70007       948.5       2012-09-10  3005         5002
-70005       2400.6      2012-07-27  3007         5001
-70008       5760        2012-09-10  3002         5001
-70010       1983.43     2012-10-10  3004         5006
-70003       2480.4      2012-10-10  3009         5003
-70012       250.45      2012-06-27  3008         5002
-70011       75.29       2012-08-17  3003         5007
-70013       3045.6      2012-04-25  3002         5001
-~~~
-Sample table: customer
-~~~
-
- customer_id |   cust_name    |    city    | grade | salesman_id 
--------------+----------------+------------+-------+-------------
-        3002 | Nick Rimando   | New York   |   100 |        5001
-        3007 | Brad Davis     | New York   |   200 |        5001
-        3005 | Graham Zusi    | California |   200 |        5002
-        3008 | Julian Green   | London     |   300 |        5002
-        3004 | Fabian Johnson | Paris      |   300 |        5006
-        3009 | Geoff Cameron  | Berlin     |   100 |        5003
-        3003 | Jozy Altidor   | Moscow     |   200 |        5007
-        3001 | Brad Guzan     | London     |       |        5005
-~~~
-Sample table: salesman
-~~~
-
- salesman_id |    name    |   city   | commission 
--------------+------------+----------+------------
-        5001 | James Hoog | New York |       0.15
-        5002 | Nail Knite | Paris    |       0.13
-        5005 | Pit Alex   | London   |       0.11
-        5006 | Mc Lyon    | Paris    |       0.14
-        5007 | Paul Adam  | Rome     |       0.13
-        5003 | Lauson Hen | San Jose |       0.12
-~~~
-~~~
-SELECT 
-    o.ord_no,
-    o.ord_date,
-    o.purch_amt,
-    c.cust_name AS "Customer Name",
-    c.grade,
-    s.name AS "Salesman",
-    s.commission
-FROM 
-    orders o
-JOIN 
-    customer c ON o.customer_id = c.customer_id
-JOIN 
-    salesman s ON o.salesman_id = s.salesman_id;
-~~~
-
-**Output:**
-
-![image](https://github.com/user-attachments/assets/ee9de951-4d51-4e9a-9876-7c44ac1c83b1)
-
-## **Question 5**
-Write a SQL statement to join the tables salesman, customer and orders so that the same column of each table appears once and only the relational rows are returned. 
-
-Sample table: orders
-~~~
-
-ord_no      purch_amt   ord_date    customer_id  salesman_id
-----------  ----------  ----------  -----------  -----------
-70001       150.5       2012-10-05  3005         5002
-70009       270.65      2012-09-10  3001         5005
-70002       65.26       2012-10-05  3002         5001
-70004       110.5       2012-08-17  3009         5003
-70007       948.5       2012-09-10  3005         5002
-70005       2400.6      2012-07-27  3007         5001
-70008       5760        2012-09-10  3002         5001
-70010       1983.43     2012-10-10  3004         5006
-70003       2480.4      2012-10-10  3009         5003
-70012       250.45      2012-06-27  3008         5002
-70011       75.29       2012-08-17  3003         5007
-70013       3045.6      2012-04-25  3002         5001
-~~~
-Sample table: customer
-~~~
-
- customer_id |   cust_name    |    city    | grade | salesman_id 
--------------+----------------+------------+-------+-------------
-        3002 | Nick Rimando   | New York   |   100 |        5001
-        3007 | Brad Davis     | New York   |   200 |        5001
-        3005 | Graham Zusi    | California |   200 |        5002
-        3008 | Julian Green   | London     |   300 |        5002
-        3004 | Fabian Johnson | Paris      |   300 |        5006
-        3009 | Geoff Cameron  | Berlin     |   100 |        5003
-        3003 | Jozy Altidor   | Moscow     |   200 |        5007
-        3001 | Brad Guzan     | London     |       |        5005
-~~~
-Sample table : salesman
-~~~
-
- salesman_id |    name    |   city   | commission 
--------------+------------+----------+------------
-        5001 | James Hoog | New York |       0.15
-        5002 | Nail Knite | Paris    |       0.13
-        5005 | Pit Alex   | London   |       0.11
-        5006 | Mc Lyon    | Paris    |       0.14
-        5007 | Paul Adam  | Rome     |       0.13
-        5003 | Lauson Hen | San Jose |       0.12
-~~~
-~~~
-SELECT 
-    o.ord_no,
-    o.purch_amt,
-    o.ord_date,
-    c.cust_name,
-    c.city AS customer_city,
-    c.grade,
-    s.name AS salesman_name,
-    s.city AS salesman_city,
-    s.commission
-FROM 
-    orders o
-JOIN 
-    customer c ON o.customer_id = c.customer_id
-JOIN 
-    salesman s ON o.salesman_id = s.salesman_id;
-~~~
-
-**Output:**
-
-![image](https://github.com/user-attachments/assets/c9b9e311-9d4b-415b-af3b-c3dbbc7bc8a2)
+<img width="967" height="402" alt="image" src="https://github.com/user-attachments/assets/159b364d-3943-4e4b-8d52-c84b91c1afc6" />
 
 
-## **Question 6**
-Write the SQL query that achieves the selection of all columns from the "patients" table (aliased as "p"), with an inner join on the "patient_id" column and a condition filtering for appointments with an appointment date between '2024-02-01' and '2024-02-28'.
-![image](https://github.com/user-attachments/assets/788c6324-2a33-4607-9b3c-ce0fbb8c721a)
-~~~
-SELECT p.*
-FROM patients p
-INNER JOIN appointments a ON p.patient_id = a.patient_id
-WHERE a.appointment_date BETWEEN '2024-02-01' AND '2024-02-28';
-~~~
+## Question 3:
+Display all departments along with the employees working in them using RIGHT JOIN.
+
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+RIGHT JOIN departments
+ON employees.department_id = departments.department_id;
+```
 
 
-**Output:**
-
-![image](https://github.com/user-attachments/assets/7da6d49a-ba82-474b-b638-3ce851014f12)
-
-## **Question 7**
-SQL statement to generate a report with customer name, city, order number, order date, order amount, salesperson name, and commission to determine if any of the existing customers have not placed orders or if they have placed orders through their salesman or by themselves.
-
-Sample table: customer
-~~~
-
- customer_id |   cust_name    |    city    | grade | salesman_id 
--------------+----------------+------------+-------+-------------
-        3002 | Nick Rimando   | New York   |   100 |        5001
-        3007 | Brad Davis     | New York   |   200 |        5001
-        3005 | Graham Zusi    | California |   200 |        5002
-        3008 | Julian Green   | London     |   300 |        5002
-        3004 | Fabian Johnson | Paris      |   300 |        5006
-        3009 | Geoff Cameron  | Berlin     |   100 |        5003
-        3003 | Jozy Altidor   | Moscow     |   200 |        5007
-        3001 | Brad Guzan     | London     |       |        5005
-~~~
-Sample table: orders
-~~~
-
-ord_no      purch_amt   ord_date    customer_id  salesman_id
-----------  ----------  ----------  -----------  -----------
-70001       150.5       2012-10-05  3005         5002
-70009       270.65      2012-09-10  3001         5005
-70002       65.26       2012-10-05  3002         5001
-70004       110.5       2012-08-17  3009         5003
-70007       948.5       2012-09-10  3005         5002
-70005       2400.6      2012-07-27  3007         5001
-70008       5760        2012-09-10  3002         5001
-70010       1983.43     2012-10-10  3004         5006
-70003       2480.4      2012-10-10  3009         5003
-70012       250.45      2012-06-27  3008         5002
-70011       75.29       2012-08-17  3003         5007
-70013       3045.6      2012-04-25  3002         5001
-~~~
-Sample table: salesman
-~~~
-
- salesman_id |    name    |   city   | commission 
--------------+------------+----------+------------
-        5001 | James Hoog | New York |       0.15
-        5002 | Nail Knite | Paris    |       0.13
-        5005 | Pit Alex   | London   |       0.11
-        5006 | Mc Lyon    | Paris    |       0.14
-        5007 | Paul Adam  | Rome     |       0.13
-        5003 | Lauson Hen | San Jose |       0.12
-~~~
-~~~
-SELECT 
-    c.cust_name,
-    c.city,
-    o.ord_no,
-    o.ord_date,
-    o.purch_amt AS "Order Amount",
-    s.name,
-    s.commission
-FROM 
-    customer c
-LEFT JOIN 
-    orders o ON c.customer_id = o.customer_id
-LEFT JOIN 
-    salesman s ON o.salesman_id = s.salesman_id;
-~~~
-**Output:**
-
-![image](https://github.com/user-attachments/assets/9e4e04ab-ce88-43cc-9a7c-266d2d60ce34)
+## Output:
 
 
-## **Question 8**
-Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name") and all columns from the "test_results" table (aliased as "t"), with an inner join on the "patient_id" column and a condition filtering for test results with the test name 'Blood Pressure'.
-![image](https://github.com/user-attachments/assets/1df56d52-08de-4577-a2ae-458a0b07da93)
-~~~
-SELECT p.first_name AS patient_name, t.*
-FROM patients p
-INNER JOIN test_results t ON p.patient_id = t.patient_id
-WHERE t.test_name = 'Blood Pressure';
-~~~
-
-**Output:**
-![image](https://github.com/user-attachments/assets/4dfa98cd-445a-4386-a013-0c51d811cf50)
-
-## **Question 9**
-Write the SQL query that achieves the selection of all columns from the "patients" table (aliased as "p"), with an inner join on the "patient_id" column and conditions filtering for test results with the test names 'Blood Test' or 'Blood Pressure' and results not containing the substring 'Normal'.
-![image](https://github.com/user-attachments/assets/ed5d407e-4808-437d-aed5-b4660a014f10)
-~~~
-SELECT p.*
-FROM patients p
-INNER JOIN test_results t ON p.patient_id = t.patient_id
-WHERE t.test_name IN ('Blood Test', 'Blood Pressure')
-  AND t.result NOT LIKE '%Normal%';
-~~~
+<img width="940" height="382" alt="image" src="https://github.com/user-attachments/assets/1d610801-f2fa-4ad6-8473-6b255f501deb" />
 
 
-**Output:**
+## Question 4:
 
-![image](https://github.com/user-attachments/assets/a5fcd77e-73be-472d-99b6-1d400b85acd3)
+Display all employees and departments using FULL OUTER JOIN.
 
-## **Question 10**
-Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c") and the "name" column from the "salesman" table (aliased as "s"), with a left join on the "salesman_id" column and a condition filtering for customers in the same city as the salesman.
-![image](https://github.com/user-attachments/assets/b12959e5-0e18-4564-8b94-cc16a9f0292a)
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+FULL OUTER JOIN departments
+ON employees.department_id = departments.department_id;
+```
 
-~~~
-SELECT c.cust_name, s.name
-FROM customer c
-LEFT JOIN salesman s ON c.salesman_id = s.salesman_id
-WHERE c.city = s.city;
-~~~
-**Output:**
+## Output:
 
-![image](https://github.com/user-attachments/assets/dd9fc321-948d-4608-a115-461dcb2c6456)
+
+<img width="941" height="455" alt="image" src="https://github.com/user-attachments/assets/04f8a803-0425-4272-a38d-8ff1029131a9" />
+
+
+## Question 5:
+
+Display employee names, department names, and salaries using INNER JOIN.
+
+```
+SELECT employees.employee_name,
+       departments.department_name,
+       employees.salary
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.department_id;
+```
+
+## Output:
+
+
+<img width="956" height="448" alt="image" src="https://github.com/user-attachments/assets/4aa64350-f464-468d-95fd-abc7273b160e" />
+
+
+## Question 6:
+
+Display employees who are assigned to a department.
+
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.department_id;
+```
+## Output:
+
+
+<img width="977" height="432" alt="image" src="https://github.com/user-attachments/assets/8b97fe04-e8c6-4c97-809c-86641ab5a655" />
+
+
+## Question 7:
+
+Display all employees, including employees who are not assigned to any department
+
+```
+SELECT employees.employee_name, departments.department_name
+FROM employees
+LEFT JOIN departments
+ON employees.department_id = departments.department_id;
+```
+
+## Output:
+
+
+<img width="922" height="441" alt="image" src="https://github.com/user-attachments/assets/d4699d21-53fa-4558-a551-e21de6a4268b" />
+
+
+## Question 8:
+
+Display all departments, including departments that have no employees.
+
+```
+SELECT departments.department_name, employees.employee_name
+FROM employees
+RIGHT JOIN departments
+ON employees.department_id = departments.department_id;
+```
+
+## Output:
+
+
+<img width="931" height="437" alt="image" src="https://github.com/user-attachments/assets/bf09c66f-2f13-4288-a007-158069b7d8b4" />
+
+
+## Question 9:
+
+Display the employee name, department name, and salary for employees earning more than 50,000.
+
+```
+SELECT employees.employee_name,
+       departments.department_name,
+       employees.salary
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.department_id
+WHERE employees.salary > 50000;
+```
+
+## Output:
+
+
+<img width="885" height="385" alt="image" src="https://github.com/user-attachments/assets/dfe76b01-41d0-40ad-bb47-9a2d626c8ca5" />
+
+
+## Question 10:
+Display the number of employees in each department using JOIN and GROUP BY.
+
+```
+SELECT departments.department_name,
+       COUNT(employees.employee_id) AS employee_count
+FROM departments
+LEFT JOIN employees
+ON departments.department_id = employees.department_id
+GROUP BY departments.department_name;
+```
+
+## Output:
+
+
+<img width="942" height="421" alt="image" src="https://github.com/user-attachments/assets/dd7e604c-1af8-426a-913f-5fc7686de9bf" />
 
 
 
-## RESULT
+## RESULT:
 Thus, the SQL queries to implement different types of joins have been executed successfully.
